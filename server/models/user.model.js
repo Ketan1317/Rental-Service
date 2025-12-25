@@ -52,16 +52,22 @@ const userSchema = new mongoose.Schema(
       type: Date,
     },
 
-    profileImage:{
-        type:String,
-        default:""
+    profileImage: {
+      type: String,
+      default: "",
+    },
+    pushSubscription: {
+      endpoint: { type: String },
+      keys: {
+        p256dh: { type: String },
+        auth: { type: String },
+      },
     },
   },
   {
     timestamps: true,
   }
 );
-
 
 const User = mongoose.model("User", userSchema);
 
