@@ -1,4 +1,4 @@
-const Property = require("../models/property.model");
+import Property  from "../models/property.model.js";
 
 const checkForRightOwner = (req, res, next) => {
   try {
@@ -17,3 +17,5 @@ const checkForRightOwner = (req, res, next) => {
       .json({success:false, error: "Require property owner middleware error" });
   }
 };
+
+export default checkForRightOwner;

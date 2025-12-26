@@ -1,6 +1,6 @@
-const express = require("express");
-const User = require("../models/user.model");
-const { sendPushNotification } = require("../services/notification.service");
+import express from "express";
+import User from "../models/user.model.js";
+import sendPushNotification from "../services/notification.service.js";
 
 const pushRouter = express.Router();
 
@@ -11,10 +11,10 @@ pushRouter.post("/notification", async (req, res) => {
     return res.status(404).json({ message: "No subscribed user found" });
   }
 
-  const {mainTitle, body} = req.body;
+  const { mainTitle, body } = req.body;
 
-  if(!mainTitle || !body){
-    return res.status(400).json({message: "Title and body are required"});
+  if (!mainTitle || !body) {
+    return res.status(400).json({ message: "Title and body are required" });
   }
 
   await sendPushNotification(user.pushSubscription, {
@@ -25,4 +25,4 @@ pushRouter.post("/notification", async (req, res) => {
   res.json({ success: true });
 });
 
-module.exports = pushRouter;
+export default pushRouter;

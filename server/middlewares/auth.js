@@ -1,4 +1,4 @@
-const { verifyToken } = require("../services/token.service");
+import { verifyToken } from "../services/token.service.js";
 
 const authMiddleWare = (req,res,next) => {
     try {
@@ -21,3 +21,5 @@ const authMiddleWare = (req,res,next) => {
         return res.status(500).json({success:false, error: "Authentication middleware error" });
     }
 }
+
+export default authMiddleWare;

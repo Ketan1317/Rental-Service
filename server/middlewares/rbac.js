@@ -11,4 +11,4 @@ const rbac = (allowedRoles = []) => {
   };
 };
 
-module.exports = rbac;
+export default rbac;

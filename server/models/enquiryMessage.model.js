@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+
 
 const enquiryMessageSchema = new mongoose.Schema(
   {

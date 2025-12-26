@@ -1,4 +1,4 @@
-const webpush = require("web-push");
+import webpush from "web-push";
 
 webpush.setVapidDetails(
   process.env.VAPID_SUBJECT,
@@ -17,4 +17,4 @@ const sendPushNotification = async (subscription, payload) => {
   }
 };
 
-module.exports = { sendPushNotification };
+export default sendPushNotification;

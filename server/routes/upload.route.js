@@ -1,24 +1,8 @@
-const express = require("express");
-const multer = require("multer");
-const { uploadOnCloudinary } = require("../services/cloudinary.service");
+import express from "express";
+import { uploadOnCloudinary } from "../services/cloudinary.service.js";
+import { upload } from "../services/multer.service.js";
 
 const uploadRouter = express.Router();
-
-// Multer config
-const upload = multer({
-  storage: multer.memoryStorage(),
-  limits: {
-    fileSize: 5 * 1024 * 1024, // 5 MB
-    files: 10,
-  },
-  fileFilter: (req, file, cb) => {
-    if (!file.mimetype.startsWith("image/")) {
-      cb(new Error("Only image files allowed"), false);
-    } else {
-      cb(null, true);
-    }
-  },
-});
 
 uploadRouter.post("/multiple", upload.array("images", 10), async (req, res) => {
   try {
@@ -49,4 +33,4 @@ uploadRouter.post("/multiple", upload.array("images", 10), async (req, res) => {
   }
 });
 
-module.exports = uploadRouter;
+export default uploadRouter;
