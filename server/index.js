@@ -5,7 +5,7 @@ import cors from "cors";
 import uploadRouter from "./routes/upload.route.js";
 import pushRouter from "./routes/pushNoti.route.js";
 import userRouter from "./routes/loginRegisteration.route.js";
-import { upload } from "./services/multer.service.js";
+import propertyRouter from "./routes/property.route.js";
 const app = express();
 
 app.use(cors({ origin: "*", credentials: true }));
@@ -22,5 +22,6 @@ app.get("/", (req, res) => {
 app.use("/upload", uploadRouter);
 app.use("/push", pushRouter);
 app.use("/api/user",userRouter);
+app.use("/api/property",propertyRouter);
 
 app.listen(port, () => console.log(`Running at port ${port}`));

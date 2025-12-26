@@ -48,12 +48,6 @@ const propertySchema = new mongoose.Schema(
       index: true,
     },
 
-    area: {
-      type: String,
-      required: true,
-      index: true,
-    },
-
     sharingType: {
       type: Number, // 1, 2, 3, 4 sharing
       required: true,
@@ -114,4 +108,6 @@ propertySchema.index({ propertyType: 1 });
 
 const Property = mongoose.model("Property", propertySchema);
 
-module.exports = Property;
+export default Property;
+
+

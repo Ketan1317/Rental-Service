@@ -1,5 +1,4 @@
 import { verifyToken } from "../services/token.service.js";
-
 const authMiddleWare = (req,res,next) => {
     try {
         if(!req.header("Authorization")){
@@ -16,6 +15,7 @@ const authMiddleWare = (req,res,next) => {
             return res.status(401).json({success:false, error: "Invalid token" });
         }
         req.user = decodeTheToken;
+        console.log("Authenticated User:", req.user);
         next();
     } catch (error) {
         return res.status(500).json({success:false, error: "Authentication middleware error" });

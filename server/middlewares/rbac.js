@@ -3,10 +3,13 @@ const rbac = (allowedRoles = []) => {
     try {
       const user = req.user;
       if (!user || !allowedRoles.includes(user.role)) {
-        return res.status(403).json({ success:false,error: "Access denied" });
+        return res.status(403).json({ success: false, error: "Access denied" });
       }
+      next();
     } catch (error) {
-      return res.status(500).json({success:false, error: "RBAC middleware error" });
+      return res
+        .status(500)
+        .json({ success: false, error: "RBAC middleware error" });
     }
   };
 };
